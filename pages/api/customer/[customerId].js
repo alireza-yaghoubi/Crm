@@ -11,19 +11,13 @@ export default async function handler(req, res) {
       .json({ status: "failed", message: "Error in connecting to DB" });
     return;
   }
-  if (req.method === "POST") {
-    const data = req.body.data;
-    if (!data.name || !data.lastName || !data.email)
-      return res
-        .status(400)
-        .json({ status: "failed", message: "Invalid data" });
+  if (req.method === "GET") {
+    const data = req.body.customerId;
+
     try {
-      const customer = await Customer.create(data);
-      res
-        .status(201)
-        .json({ status: "Success", message: "Data created", data: customer });
+      const customer = await Customer.findOne({ _id: id });
+      res.status(200).json({ status: "success", data: customer });
     } catch (error) {
-      console.log(error);
       res.status(500).json({
         status: "failed",
         message: "Error in retrieving data from database",
