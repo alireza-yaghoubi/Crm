@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     return;
   }
 
-  if (req.metode === "PATCH") {
+  if (req.method === "PATCH") {
     const id = req.query.customerId;
     const data = req.body.data;
     try {
@@ -26,7 +26,7 @@ export default async function handler(req, res) {
       customer.date = data.date;
       customer.products = data.products;
       customer.updatedAt = Date.now();
-      customer.save();
+      await customer.save();
       res.status(200).json({ status: "success", data: customer });
     } catch (error) {
       console.log(error.message);
