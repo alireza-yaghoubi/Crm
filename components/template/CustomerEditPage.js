@@ -11,7 +11,7 @@ function CustomerEditPage({ data, id }) {
     email: data.email,
     phone: data.phone || "",
     address: data.address || "",
-    postalCodeaddress: data.postalCode || "",
+    postalCode: data.postalCode || "",
     products: data.products || "",
     date: date,
   });

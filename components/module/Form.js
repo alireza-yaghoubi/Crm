@@ -48,7 +48,7 @@ function Form({ form, setForm }) {
         name="postalCode"
         label="Postal Code"
         type="text"
-        value={form.postalCodeaddress}
+        value={form.postalCode}
         onChange={changeHandler}
       />
       <FormInput
